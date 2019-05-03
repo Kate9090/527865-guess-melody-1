@@ -1,15 +1,21 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import ReactDOM from "react-dom";
 
-import Welcome from './components/welcome/welcome';
+import Welcome from './components/welcome/welcome.jsx';
 
-const App = () => {
-  // const {gameTime, errorCount} = props;
+const App = (props) => {
+  const {gameTime, errorCount} = props;
 
   return <Welcome
-    // time={gameTime}
-    // errorCount={errorCount}
+    time={gameTime}
+    errorCount={errorCount}
   />;
+};
+
+App.propTypes = {
+  gameTime: PropTypes.number,
+  errorCount: PropTypes.number
 };
 
 const init = () => {
