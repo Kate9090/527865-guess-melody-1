@@ -18,9 +18,10 @@ it(`simulates click event`, () =>{
 
 
   const startButton = welcome.find(`button`);
-  startButton.simulate(`click`, {preventDefault() {}
-  });
 
+  // expect(startButton).to.have.lengthOf(1);
+
+  startButton.simulate(`click`);
   expect(buttonClick).toHaveBeenCalledTimes(1);
 });
 
