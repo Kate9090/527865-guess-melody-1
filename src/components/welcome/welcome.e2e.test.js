@@ -16,10 +16,7 @@ it(`simulates click event`, () =>{
     onClick={buttonClick}
   />);
 
-
   const startButton = welcome.find(`button`);
-
-  // expect(startButton).to.have.lengthOf(1);
 
   startButton.simulate(`click`);
   expect(buttonClick).toHaveBeenCalledTimes(1);
