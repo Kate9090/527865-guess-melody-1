@@ -1,22 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+// import questions from './mocks/questions';
 
-import Welcome from './components/welcome/welcome.jsx';
-
-const App = (props) => {
-  const {gameTime, errorCount} = props;
-
-  return <Welcome
-    time={gameTime}
-    errorCount={errorCount}
-  />;
-};
-
-App.propTypes = {
-  gameTime: PropTypes.number,
-  errorCount: PropTypes.number
-};
+import App from './components/app/app.jsx';
 
 const init = () => {
   const settings = {
@@ -27,6 +14,7 @@ const init = () => {
       <App
         errorCount={settings.errorCount}
         gameTime={settings.gameTime
+        // questions = {}
         }/>, document.querySelector(`.main`));
 };
 
