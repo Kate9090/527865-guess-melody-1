@@ -20,7 +20,9 @@ class App extends Component {
       time={gameTime}
       errorCount={errorCount}
       onClick={() => {
-        this.state.question = question + 1;
+        this.setState = {
+          question: question + 1,
+        };
       }
       }
     />;
