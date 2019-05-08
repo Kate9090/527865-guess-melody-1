@@ -18,7 +18,7 @@ exports[`ArtistQuestionScreen renders correctly 1`] = `
     />
     <audio />
   </div>
-  <htmlForm
+  <form
     className="game__artist"
   >
     <div
@@ -87,6 +87,6 @@ exports[`ArtistQuestionScreen renders correctly 1`] = `
         Пелагея
       </label>
     </div>
-  </htmlForm>
+  </form>
 </section>
 `;

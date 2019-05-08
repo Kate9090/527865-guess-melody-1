@@ -15,7 +15,7 @@ const ArtistQuestionScreen = ({question, onAnswer}) => {
     <form className="game__artist" onChange={onAnswer}>
       {answers.map((it, i) => (
         <div className="artist" key = {`answer-${i}`}>
-          <input className="artist__input visually-hidden" type="radio" name="answer" value={it.artist} id={`answer-${i}`} />
+          <input className="artist__input visually-hidden" type="radio" name="answer" value={`answer-${i}`} id={`answer-${i}`} />
           <label className="artist__name" htmlFor={`answer-${i}`}>
             <img className="artist__picture" src="http://placehold.it/134x134" alt={it.artist} />
             {it.artist}
