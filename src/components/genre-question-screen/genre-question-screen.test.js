@@ -4,36 +4,38 @@ import renderer from 'react-test-renderer';
 import GenreQuestionScreen from './genre-question-screen.jsx';
 
 const mock = {
-  genre: `rock`,
-  answers: [
-    {
-      genre: `rock`,
-      src: ``,
-    },
-    {
-      genre: `blues`,
-      src: ``,
-    },
-    {
-      genre: `jazz`,
-      src: ``,
-    },
-    {
-      genre: `jazz`,
-      src: ``,
-    },
-  ]
+  question: {
+    type: `genre`,
+    genre: `rock`,
+    answers: [
+      {
+        src: `path`,
+        genre: `rock`,
+      },
+      {
+        genre: `blues`,
+        src: ``,
+      },
+      {
+        genre: `jazz`,
+        src: ``,
+      },
+      {
+        genre: `jazz`,
+        src: ``,
+      },
+    ],
+  },
 };
+
 
 it(`GenreQuestionScreen renders correctly`, () => {
   const {
-    genre: genre,
-    answers: answers,
+    question
   } = mock;
   const tree = renderer
     .create(<GenreQuestionScreen
-      genre = {genre}
-      answers = {answers}
+      question = {question}
     />)
     .toJSON();
   expect(tree).toMatchSnapshot();

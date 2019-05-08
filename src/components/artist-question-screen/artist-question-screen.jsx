@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 const ArtistQuestionScreen = (props) => {
-  const {answers} = props;
+  const {answers, onAnswer} = props;
   return <section className="game__screen">
     <h2 className="game__title">Кто исполняет эту песню?</h2>
     <div className="game__track">
@@ -10,12 +10,12 @@ const ArtistQuestionScreen = (props) => {
       <audio></audio>
     </div>
 
-    <htmlForm className="game__artist">
+    <htmlForm className="game__artist" onChange={onAnswer}>
       {answers.map((it, i) => (
         <div className="artist" key = {`answer-${i}`}>
           <input className="artist__input visually-hidden" type="radio" name="answer" value={`answer-${i}`} id={`answer-${i}`} />
           <label className="artist__name" htmlFor={`answer-${i}`}>
-            <img className="artist__picture" src="http://placehold.it/134x134" alt="Пелагея" />
+            <img className="artist__picture" src="http://placehold.it/134x134" alt={it.artist} />
             {it.artist}
           </label>
         </div>
@@ -31,6 +31,7 @@ ArtistQuestionScreen.propTypes = {
     artist: PropTypes.oneOf([`Пелагея`, `Краснознаменная дивизия имени моей бабушки`, `Lordi`]).isRequired,
     src: PropTypes.string.isRequired
   })).isRequired,
+  onAnswer: PropTypes.func,
 };
 
 export default ArtistQuestionScreen;

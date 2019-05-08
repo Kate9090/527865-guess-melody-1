@@ -50,6 +50,7 @@ it(`simulates click on welcome screen as an answer on first questions`, () =>{
 
   const app = mount(<App
     times={0}
+    gameTime={0}
     errorCount={0}
     questions={questions}
     onClick={buttonClick}
@@ -60,8 +61,11 @@ it(`simulates click on welcome screen as an answer on first questions`, () =>{
   button.simulate(`click`);
   app.update();
 
-  const title = app.find(`.game__title`);
-  expect(title).toHaveLength(1);
+  const currentQuestion = app.state(`question`);
+  expect(currentQuestion).toEqual(0);
 
-  expect(title.text().indexOf(`rock`).toBeGreaterThanOrEqual(0));
+  // const title = app.find(`.game__title`);
+  // expect(title).toHaveLength(1);
+
+  // expect(title.text().indexOf(`rock`).toBeGreaterThanOrEqual(0));
 });
