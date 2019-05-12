@@ -21,8 +21,8 @@ class App extends Component {
       } = this.props;
 
       return <Welcome
-        errorCount={errorCount}
-        gameTime={gameTime}
+        errorCount={this.props.errorCount}
+        time={this.props.gameTime}
         onClick={onClick}
       />;
     }
@@ -39,8 +39,7 @@ class App extends Component {
       />;
     }
 
-    throw new TypeError(`something went wrong`);
-    // return null;
+    return null;
   }
 
   render() {
@@ -88,9 +87,11 @@ class App extends Component {
 }
 
 App.propTypes = {
-  gameTime: PropTypes.number.isRequired,
-  errorCount: PropTypes.number.isRequired,
-  questions: PropTypes.array.isRequired,
+  questionList: PropTypes.arrayOf(PropTypes.shape({
+    gameTime: PropTypes.number.isRequired,
+    errorCount: PropTypes.number.isRequired,
+    questions: PropTypes.array.isRequired,
+  })),
 };
 
 export default App;
