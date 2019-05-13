@@ -7,6 +7,8 @@ const mock = {
   question: {
     artist: `Пелагея`,
     type: `artist`,
+    gameTime: 0,
+    errorCount: 0,
     answers: [
       {
         artist: `Пелагея`,

@@ -7,6 +7,8 @@ const mock = {
   question: {
     type: `genre`,
     genre: `rock`,
+    gameTime: 0,
+    errorCount: 0,
     answers: [
       {
         src: `path`,
