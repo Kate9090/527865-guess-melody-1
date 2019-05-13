@@ -21,8 +21,8 @@ class App extends Component {
       } = this.props;
 
       return <Welcome
-        errorCount={this.props.errorCount}
-        time={this.props.gameTime}
+        errorCount={errorCount}
+        time={gameTime}
         onClick={onClick}
       />;
     }
@@ -87,11 +87,17 @@ class App extends Component {
 }
 
 App.propTypes = {
-  questionList: PropTypes.arrayOf(PropTypes.shape({
+  questions: PropTypes.arrayOf(PropTypes.shape({
     gameTime: PropTypes.number.isRequired,
     errorCount: PropTypes.number.isRequired,
-    questions: PropTypes.array.isRequired,
-  })),
+    answers: PropTypes.array.isRequired,
+    // Of(PropTypes.shape({
+    //   src: PropTypes.string.isRequired,
+    //   genre: PropTypes.PropTypes.oneOf([`rock`, `jazz`, `blues`, `pop`]).isRequired,
+    // })).isRequired
+  })).isRequired,
+  gameTime: PropTypes.number.isRequired,
+  errorCount: PropTypes.number.isRequired,
 };
 
 export default App;
