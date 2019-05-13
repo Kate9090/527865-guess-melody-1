@@ -3,7 +3,7 @@ import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {mount} from 'enzyme';
 
-import App from './app.jsx';
+import Screen from './screen.jsx';
 
 Enzyme.configure({adapter: new Adapter()});
 
@@ -33,16 +33,6 @@ const mock = {
         },
       ],
     },
-    // {
-    //   type: `artist`,
-    //   artist: `rock`,
-    //   answers: [
-    //     {
-    //       src: `path`,
-    //       artist: `Пелагея`,
-    //     },
-    //   ],
-    // }
   ]
 };
 
@@ -50,20 +40,19 @@ it(`simulates click on welcome screen as an answer on first questions`, () =>{
   const {questions} = mock;
   const buttonClick = jest.fn();
 
-  const app = mount(<App
-    // times={0}
+  const screen = mount(<Screen
     gameTime={0}
     errorCount={0}
     questions={questions}
     onClick={buttonClick}
   />);
 
-  const button = app.find(`button`);
+  const button = screen.find(`button`);
 
   button.simulate(`click`);
-  app.update();
+  screen.update();
 
-  const currentQuestion = app.state(`question`);
+  const currentQuestion = screen.state(`question`);
   expect(currentQuestion).toEqual(0);
 
   // const title = app.find(`.game__title`);
