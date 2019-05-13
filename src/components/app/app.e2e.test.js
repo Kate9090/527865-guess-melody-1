@@ -12,6 +12,8 @@ const mock = {
     {
       type: `genre`,
       genre: `rock`,
+      gameTime: 0,
+      errorCount: 0,
       answers: [
         {
           src: `path`,
@@ -49,7 +51,7 @@ it(`simulates click on welcome screen as an answer on first questions`, () =>{
   const buttonClick = jest.fn();
 
   const app = mount(<App
-    times={0}
+    // times={0}
     gameTime={0}
     errorCount={0}
     questions={questions}

@@ -6,6 +6,7 @@ import ArtistQuestionScreen from './artist-question-screen.jsx';
 const mock = {
   question: {
     artist: `Пелагея`,
+    type: `artist`,
     answers: [
       {
         artist: `Пелагея`,
