@@ -12,6 +12,7 @@ class Screen extends Component {
     this.state = {
       question: -1,
     };
+    this._handleNumberOfScreen = this._handleNumberOfScreen.bind(this);
   }
 
   _handleNumberOfScreen() {
