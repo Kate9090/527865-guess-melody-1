@@ -2,32 +2,36 @@ const questions = [
   {
     type: `genre`,
     genre: `rock`,
-    gameTime: 5,
-    errorCount: 3,
+    // gameTime: 5,
+    // errorCount: 3,
     answers: [
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+        src: `https://commons.wikimedia.org/wiki/File:Beach_Bum_(ISRC_USUAN1100347).mp3`,
         genre: `rock`,
       },
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+        src: `https://commons.wikimedia.org/wiki/File:Keef_Trouble_as_Dougie_Damone,_Hello_Mum.oga`,
         genre: `pop`,
       },
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+        src: `https://commons.wikimedia.org/wiki/File:00_Jazz_Violin_Solo.ogg`,
         genre: `jazz`,
       },
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+        src: `https://commons.wikimedia.org/wiki/File:Afteryouvegone-first8bars.ogg`,
         genre: `blues`,
       },
     ],
   },
   {
     type: `artist`,
+    song: {
+      artist: `Пелагея`,
+      src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+    },
     artist: `Пелагея`,
-    gameTime: 5,
-    errorCount: 3,
+    // gameTime: 5,
+    // errorCount: 3,
     answers: [
       {
         src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.png`,
