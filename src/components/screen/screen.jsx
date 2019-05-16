@@ -14,32 +14,40 @@ class Screen extends Component {
     };
   }
 
-  _getScreen(question, onClick) {
+  _handleNumberOfScreen() {
+    // const {
+    //   questions,
+    // } = this.props;
+
+    this.setState({
+      question: this.state.question + 1 >= this.props.questions.length
+        ? -1
+        : this.state.question + 1,
+    });
+  }
+
+  _getScreen(question) {
     if (!question) {
       const {
         screenParams,
       } = this.props;
-      // const {
-      //   errorCount,
-      //   gameTime,
-      // } = screenParams;
-
+      // this._handleNumberOfScreen() = this._handleNumberOfScreen().bind(this);
 
       return <Welcome
         param={screenParams}
-        onClick={onClick}
+        onClick={this._handleNumberOfScreen()}
       />;
     }
 
     switch (question.type) {
       case `genre`: return <GenreQuestionScreen
         question={question}
-        onAnswer={onClick}
+        onAnswer={this._handleNumberOfScreen()}
       />;
 
       case `artist`: return <ArtistQuestionScreen
         question={question}
-        onAnswer={onClick}
+        onAnswer={this._handleNumberOfScreen()}
       />;
     }
 
@@ -50,15 +58,8 @@ class Screen extends Component {
     const {questions} = this.props;
     const {question} = this.state;
 
-
     return <section>
-      {this._getScreen(questions[question], () => {
-        this.setState({
-          question: question + 1 >= questions.length
-            ? -1
-            : question + 1,
-        });
-      })}
+      {this._getScreen(questions[question])}
     </section>;
   }
 }
@@ -67,10 +68,6 @@ Screen.propTypes = {
   questions: PropTypes.arrayOf(PropTypes.shape({
 
     answers: PropTypes.array.isRequired,
-    // Of(PropTypes.shape({
-    //   src: PropTypes.string.isRequired,
-    //   genre: PropTypes.PropTypes.oneOf([`rock`, `jazz`, `blues`, `pop`]).isRequired,
-    // })).isRequired
   })).isRequired,
   screenParams: PropTypes.shape({
     gameTime: PropTypes.number.isRequired,
