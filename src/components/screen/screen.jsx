@@ -15,14 +15,12 @@ class Screen extends Component {
   }
 
   _handleNumberOfScreen() {
-    // const {
-    //   questions,
-    // } = this.props;
+    const {questions} = this.props;
 
-    console.log(this.props.questions.length);
+    console.log(questions);
 
     this.setState({
-      question: this.state.question + 1 >= this.props.questions.length
+      question: this.state.question + 1 >= questions.length
         ? -1
         : this.state.question + 1,
     });
@@ -33,24 +31,22 @@ class Screen extends Component {
       const {
         screenParams,
       } = this.props;
-      console.log(screenParams);
-      // this._handleNumberOfScreen() = this._handleNumberOfScreen().bind(this);
 
       return <Welcome
         param={screenParams}
-        onClick={this._handleNumberOfScreen()}
+        onClick={this._handleNumberOfScreen}
       />;
     }
 
     switch (question.type) {
       case `genre`: return <GenreQuestionScreen
         question={question}
-        onAnswer={this._handleNumberOfScreen()}
+        onAnswer={this._handleNumberOfScreen}
       />;
 
       case `artist`: return <ArtistQuestionScreen
         question={question}
-        onAnswer={this._handleNumberOfScreen()}
+        onAnswer={this._handleNumberOfScreen}
       />;
     }
 
