@@ -19,6 +19,8 @@ class Screen extends Component {
     //   questions,
     // } = this.props;
 
+    console.log(this.props.questions.length);
+
     this.setState({
       question: this.state.question + 1 >= this.props.questions.length
         ? -1
@@ -31,6 +33,7 @@ class Screen extends Component {
       const {
         screenParams,
       } = this.props;
+      console.log(screenParams);
       // this._handleNumberOfScreen() = this._handleNumberOfScreen().bind(this);
 
       return <Welcome
