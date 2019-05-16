@@ -7,23 +7,11 @@ import GenreQuestionScreen from './genre-question-screen.jsx';
 
 Enzyme.configure({adapter: new Adapter()});
 
-const mock = {
-  question: {
-    type: `genre`,
-    genre: `rock`,
-    gameTime: 0,
-    errorCount: 0,
-    answers: [
-      {
-        src: `path`,
-        genre: `rock`,
-      },
-    ],
-  },
-};
+import questions from '../../mocks/questions';
+const mockQuestion = questions;
 
 it(`simulates chose checkbox on GenreQuestionScreen as an answer on the questions about genre`, () =>{
-  const {question} = mock;
+  const {question} = mockQuestion;
   const onButtonSubmit = jest.fn();
   const formSendPrevention = jest.fn();
   const genreQuestion = mount(<GenreQuestionScreen

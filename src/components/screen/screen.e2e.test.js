@@ -7,43 +7,21 @@ import Screen from './screen.jsx';
 
 Enzyme.configure({adapter: new Adapter()});
 
-const mock = {
-  questions: [
-    {
-      type: `genre`,
-      genre: `rock`,
-      gameTime: 0,
-      errorCount: 0,
-      answers: [
-        {
-          src: `path`,
-          genre: `rock`,
-        },
-        {
-          src: `path`,
-          genre: `jazz`,
-        },
-        {
-          src: `path`,
-          genre: `blues`,
-        },
-        {
-          src: `path`,
-          genre: `rock`,
-        },
-      ],
-    },
-  ]
-};
+import questions from '../../mocks/questions';
+import parametrs from '../../mocks/parametrs';
+
+const mockQuestion = questions;
+const mockParams = parametrs;
 
 it(`simulates click on welcome screen as an answer on first questions`, () =>{
-  const {questions} = mock;
+  const {question} = mockQuestion;
+  const {param} = mockParams;
+
   const buttonClick = jest.fn();
 
   const screen = mount(<Screen
-    gameTime={0}
-    errorCount={0}
-    questions={questions}
+    screenParams={param}
+    questions={question}
     onClick={buttonClick}
   />);
 

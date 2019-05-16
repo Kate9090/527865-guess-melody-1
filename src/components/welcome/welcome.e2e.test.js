@@ -5,14 +5,18 @@ import {shallow} from 'enzyme';
 
 import Welcome from './welcome.jsx';
 
+import parametrs from '../../mocks/parametrs';
+
+const mock = parametrs;
+
 Enzyme.configure({adapter: new Adapter()});
 
 it(`simulates click event`, () =>{
   const buttonClick = jest.fn();
+  const {params} = mock;
 
   const welcome = shallow(<Welcome
-    times={0}
-    errorCount={0}
+    param = {params}
     onClick={buttonClick}
   />);
 

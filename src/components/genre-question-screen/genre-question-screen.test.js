@@ -3,38 +3,13 @@ import renderer from 'react-test-renderer';
 
 import GenreQuestionScreen from './genre-question-screen.jsx';
 
-const mock = {
-  question: {
-    type: `genre`,
-    genre: `rock`,
-    gameTime: 0,
-    errorCount: 0,
-    answers: [
-      {
-        src: `path`,
-        genre: `rock`,
-      },
-      {
-        genre: `blues`,
-        src: ``,
-      },
-      {
-        genre: `jazz`,
-        src: ``,
-      },
-      {
-        genre: `jazz`,
-        src: ``,
-      },
-    ],
-  },
-};
-
+import questions from '../../mocks/questions';
+const mockQuestion = questions;
 
 it(`GenreQuestionScreen renders correctly`, () => {
   const {
     question
-  } = mock;
+  } = mockQuestion;
   const tree = renderer
     .create(<GenreQuestionScreen
       question = {question}

@@ -19,15 +19,14 @@ class Screen extends Component {
       const {
         screenParams,
       } = this.props;
-      const {
-        errorCount,
-        gameTime,
-      } = screenParams;
+      // const {
+      //   errorCount,
+      //   gameTime,
+      // } = screenParams;
 
 
       return <Welcome
-        errorCount={errorCount}
-        time={gameTime}
+        param={screenParams}
         onClick={onClick}
       />;
     }
