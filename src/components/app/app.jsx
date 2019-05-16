@@ -6,12 +6,10 @@ import Screen from '../screen/screen.jsx';
 class App extends Component {
   constructor(props) {
     super(props);
-
   }
 
-
   render() {
-    const {questions, gameTime, errorCount} = this.props;
+    const {questions, gameParams} = this.props;
 
     return <section>
       <header className="game__header">
@@ -42,7 +40,7 @@ class App extends Component {
         </div>
       </header>
 
-      <Screen questions={questions} gameTime={gameTime} errorCount={errorCount}/>
+      <Screen questions={questions} screenParams={gameParams}/>
 
     </section>;
   }
@@ -50,13 +48,13 @@ class App extends Component {
 
 App.propTypes = {
   questions: PropTypes.arrayOf(PropTypes.shape({
-    gameTime: PropTypes.number.isRequired,
-    errorCount: PropTypes.number.isRequired,
     answers: PropTypes.array.isRequired,
 
   })).isRequired,
-  gameTime: PropTypes.number.isRequired,
-  errorCount: PropTypes.number.isRequired,
+  gameParams: PropTypes.shape({
+    gameTime: PropTypes.number.isRequired,
+    errorCount: PropTypes.number.isRequired,
+  }),
 };
 
 export default App;

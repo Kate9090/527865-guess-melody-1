@@ -17,9 +17,13 @@ class Screen extends Component {
   _getScreen(question, onClick) {
     if (!question) {
       const {
+        screenParams,
+      } = this.props;
+      const {
         errorCount,
         gameTime,
-      } = this.props;
+      } = screenParams;
+
 
       return <Welcome
         errorCount={errorCount}
@@ -47,6 +51,7 @@ class Screen extends Component {
     const {questions} = this.props;
     const {question} = this.state;
 
+
     return <section>
       {this._getScreen(questions[question], () => {
         this.setState({
@@ -61,16 +66,17 @@ class Screen extends Component {
 
 Screen.propTypes = {
   questions: PropTypes.arrayOf(PropTypes.shape({
-    gameTime: PropTypes.number.isRequired,
-    errorCount: PropTypes.number.isRequired,
+
     answers: PropTypes.array.isRequired,
     // Of(PropTypes.shape({
     //   src: PropTypes.string.isRequired,
     //   genre: PropTypes.PropTypes.oneOf([`rock`, `jazz`, `blues`, `pop`]).isRequired,
     // })).isRequired
   })).isRequired,
-  gameTime: PropTypes.number.isRequired,
-  errorCount: PropTypes.number.isRequired,
+  screenParams: PropTypes.shape({
+    gameTime: PropTypes.number.isRequired,
+    errorCount: PropTypes.number.isRequired,
+  }),
 };
 
 export default Screen;
