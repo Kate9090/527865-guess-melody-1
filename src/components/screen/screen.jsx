@@ -18,7 +18,7 @@ class Screen extends Component {
   _handleNumberOfScreen() {
     const {questions} = this.props;
 
-    console.log(questions);
+    // console.log(questions);
 
     this.setState({
       question: this.state.question + 1 >= questions.length
