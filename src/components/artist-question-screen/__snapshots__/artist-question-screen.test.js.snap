@@ -58,11 +58,11 @@ exports[`ArtistQuestionScreen renders correctly 1`] = `
         htmlFor="answer-1"
       >
         <img
-          alt="Пелагея"
+          alt="Краснознаменная дивизия имени моей бабушки"
           className="artist__picture"
           src="http://placehold.it/134x134"
         />
-        Пелагея
+        Краснознаменная дивизия имени моей бабушки
       </label>
     </div>
     <div
@@ -80,11 +80,11 @@ exports[`ArtistQuestionScreen renders correctly 1`] = `
         htmlFor="answer-2"
       >
         <img
-          alt="Пелагея"
+          alt="Lordi"
           className="artist__picture"
           src="http://placehold.it/134x134"
         />
-        Пелагея
+        Lordi
       </label>
     </div>
   </form>

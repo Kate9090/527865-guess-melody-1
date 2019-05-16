@@ -9,13 +9,11 @@ import parametrs from '../../mocks/parametrs';
 const mockQuestion = questions;
 const mockParams = parametrs;
 
-it(`renders correctly welcome screen`, () => {
-  const {question} = mockQuestion;
-  const {param} = mockParams;
+it(`renders correctly screens`, () => {
   const tree = renderer
     .create(<Screen
-      screenParams={param}
-      questions={question}
+      screenParams={mockParams}
+      questions={mockQuestion}
     />)
     .toJSON();
   expect(tree).toMatchSnapshot();

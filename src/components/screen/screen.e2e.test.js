@@ -14,14 +14,12 @@ const mockQuestion = questions;
 const mockParams = parametrs;
 
 it(`simulates click on welcome screen as an answer on first questions`, () =>{
-  const {question} = mockQuestion;
-  const {param} = mockParams;
 
   const buttonClick = jest.fn();
 
   const screen = mount(<Screen
-    screenParams={param}
-    questions={question}
+    screenParams={mockParams}
+    questions={mockQuestion}
     onClick={buttonClick}
   />);
 

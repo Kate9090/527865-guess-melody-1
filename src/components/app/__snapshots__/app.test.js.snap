@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly welcome screen 1`] = `
+exports[`renders correctly app screen 1`] = `
 <section>
   <header
     className="game__header"
@@ -113,12 +113,10 @@ exports[`renders correctly welcome screen 1`] = `
         >
           <li>
             За 
-            0
              минут нужно ответить на все вопросы.
           </li>
           <li>
             Можно допустить 
-            0
              ошибки.
           </li>
         </ul>
