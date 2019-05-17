@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-const Welcome = (props) => {
-  const {time, errorCount, onClick} = props;
+const Welcome = (param) => {
+  const {time, errorCount, onClick} = param;
 
   return <div>
     <section className="welcome">
@@ -22,8 +22,10 @@ const Welcome = (props) => {
 };
 
 Welcome.propTypes = {
-  time: PropTypes.number,
-  errorCount: PropTypes.number,
+  param: PropTypes.shape({
+    gameTime: PropTypes.number.isRequired,
+    errorCount: PropTypes.number.isRequired,
+  }),
   onClick: PropTypes.func
 };
 
