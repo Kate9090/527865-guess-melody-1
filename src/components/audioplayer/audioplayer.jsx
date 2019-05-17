@@ -65,7 +65,7 @@ class AudioPlayer extends React.PureComponent {
   }
 
   componentDidUpdate() {
-    if (this.state.isPlaying) {
+    if (this.props.isPlaying) {
       this._audio.play();
     } else {
       this._audio.pause();

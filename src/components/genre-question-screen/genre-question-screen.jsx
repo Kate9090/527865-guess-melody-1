@@ -28,11 +28,11 @@ class GenreQuestionScreen extends PureComponent {
           <div className="track" key = {`answer-${i}`}>
             <AudioPlayer
               src={it.src}
-              isPlaying={i === this.state.activePlayer}
               onPlayButtonClick={() => this.setState({
                 activePlayer: this.state.activePlayer === i ? -1 : i
               })
               }
+              isPlaying={i === this.state.activePlayer}
             />
             <div className="game__answer">
               <input className="game__input visually-hidden" type="checkbox" name="answer" value={`answer-${i}`} id={`answer-${i}`} />
