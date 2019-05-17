@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import AudioPlayer from '../audioplayer/audioplayer.jsx';
 
-
 class ArtistQuestionScreen extends PureComponent {
   constructor(props) {
     super(props);

@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-const Welcome = (param) => {
-  const {time, errorCount, onClick} = param;
+const Welcome = (props) => {
+  const {param, onClick} = props;
+  const {gameTime, errorCount} = param;
+  // console.log(param);
 
   return <div>
     <section className="welcome">
@@ -13,7 +15,7 @@ const Welcome = (param) => {
       <h2 className="welcome__rules-title">Правила игры</h2>
       <p className="welcome__text">Правила просты:</p>
       <ul className="welcome__rules-list">
-        <li>За {time} минут нужно ответить на все вопросы.</li>
+        <li>За {gameTime} минут нужно ответить на все вопросы.</li>
         <li>Можно допустить {errorCount} ошибки.</li>
       </ul>
       <p className="welcome__text">Удачи!</p>
@@ -26,7 +28,7 @@ Welcome.propTypes = {
     gameTime: PropTypes.number.isRequired,
     errorCount: PropTypes.number.isRequired,
   }),
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 };
 
 export default Welcome;

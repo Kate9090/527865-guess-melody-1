@@ -522,7 +522,10 @@ img {
   flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+
+  padding-bottom: 400px;
+  color: #af6892; }
 
 .welcome__logo {
   margin: 0;
@@ -552,7 +555,7 @@ img {
   font-style: italic;
   font-weight: 300;
   font-size: 33px;
-  color: #230d1a;
+  color: inherit;
   margin-top: 300px; }
 
 .welcome__text {

@@ -4,15 +4,17 @@ import PropTypes from 'prop-types';
 class AudioPlayer extends React.PureComponent {
   constructor(props) {
     super(props);
-
+    // const {src} = props;
     const {isPlaying, src} = props;
 
     this._audio = new Audio(src);
+
     this.state = {
       progress: this._audio.currentTime,
       isLoading: true,
       isPlaying,
     };
+
 
     this._audio.oncanplaythrough = () => this.setState({
       isLoading: false,
@@ -40,6 +42,9 @@ class AudioPlayer extends React.PureComponent {
   }
 
   componentDidMount() {
+    const {src} = this.props;
+    // const {src} = question;
+    this._audio = new Audio(src);
     this._audio.oncanplaythrough = () => this.setState({
       isLoading: false,
     });
@@ -86,6 +91,18 @@ class AudioPlayer extends React.PureComponent {
 AudioPlayer.propTypes = {
   isPlaying: PropTypes.bool.isRequired,
   src: PropTypes.string.isRequired,
+  // question: PropTypes.shape({
+  //   song: PropTypes.shape({
+  //     artist: PropTypes.oneOf([`Пелагея`, `Краснознаменная дивизия имени моей бабушки`, `Lordi`]).isRequired,
+  //     src: PropTypes.string.isRequired,
+  //   }),
+  //   answers: PropTypes.arrayOf(PropTypes.shape({
+  //     src: PropTypes.string.isRequired,
+  //     artist: PropTypes.oneOf([`Пелагея`, `Краснознаменная дивизия имени моей бабушки`, `Lordi`]).isRequired,
+  //   })).isRequired,
+  //   // artist: PropTypes.oneOf([`Пелагея`, `Краснознаменная дивизия имени моей бабушки`, `Lordi`]).isRequired,
+  //   type: PropTypes.oneOf([`genre`, `artist`]).isRequired,
+  // }).isRequired,
   onPlayButtonClick: PropTypes.func.isRequired,
 };
 

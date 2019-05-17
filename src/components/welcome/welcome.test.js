@@ -9,10 +9,10 @@ const mock = parametrs;
 
 
 it(`renders correctly welcome screen`, () => {
-  const {params} = mock;
+  // const {params} = mock;
 
   const tree = renderer
-    .create(<Welcome param={params}/>)
+    .create(<Welcome param={mock}/>)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

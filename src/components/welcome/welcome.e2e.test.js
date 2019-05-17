@@ -13,10 +13,9 @@ Enzyme.configure({adapter: new Adapter()});
 
 it(`simulates click event`, () =>{
   const buttonClick = jest.fn();
-  const {params} = mock;
 
   const welcome = shallow(<Welcome
-    param = {params}
+    param = {mock}
     onClick={buttonClick}
   />);
 

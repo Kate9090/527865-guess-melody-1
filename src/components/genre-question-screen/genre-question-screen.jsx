@@ -1,7 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from 'prop-types';
 
-
 import AudioPlayer from '../audioplayer/audioplayer.jsx';
 
 class GenreQuestionScreen extends PureComponent {
@@ -9,7 +8,6 @@ class GenreQuestionScreen extends PureComponent {
     super(props);
     this.state = {
       activePlayer: -1,
-      isPlaying: false,
     };
   }
 
@@ -30,11 +28,11 @@ class GenreQuestionScreen extends PureComponent {
           <div className="track" key = {`answer-${i}`}>
             <AudioPlayer
               src={it.src}
+              isPlaying={i === this.state.activePlayer}
               onPlayButtonClick={() => this.setState({
                 activePlayer: this.state.activePlayer === i ? -1 : i
               })
               }
-              isPlaying={i === this.state.activePlayer}
             />
             <div className="game__answer">
               <input className="game__input visually-hidden" type="checkbox" name="answer" value={`answer-${i}`} id={`answer-${i}`} />
