@@ -38,28 +38,30 @@ class AudioPlayer extends React.PureComponent {
   }
 
   componentDidMount() {
-    const {src} = this.props;
-    const audio = this._audioRef.current;
-    audio.src = src;
+    if (this._audioRef.current) {
+      const {src} = this.props;
+      const audio = this._audioRef.current;
+      audio.src = src;
 
-    audio.oncanplaythrough = () => this.setState({
-      isLoading: false,
-    });
-
-    audio.onplay = () => {
-      this.setState({
-        isPlaying: true,
+      audio.oncanplaythrough = () => this.setState({
+        isLoading: false,
       });
-    };
 
-    audio.onpause = () => this.setState({
-      isPlaying: false,
-    });
+      audio.onplay = () => {
+        this.setState({
+          isPlaying: true,
+        });
+      };
 
-    audio.ontimeupdate = () => this.setState({
-      progress: audio.currentTime
-    });
+      audio.onpause = () => this.setState({
+        isPlaying: false,
+      });
 
+      audio.ontimeupdate = () => this.setState({
+        progress: audio.currentTime
+      });
+
+    }
   }
 
 
@@ -74,13 +76,15 @@ class AudioPlayer extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    const audio = this._audioRef.current;
+    if (this._audioRef.current) {
+      const audio = this._audioRef.current;
 
-    audio.oncanplaythrough = null;
-    audio.onplay = null;
-    audio.onpause = null;
-    audio.ontimeupdate = null;
-    audio.src = ``;
+      audio.oncanplaythrough = null;
+      audio.onplay = null;
+      audio.onpause = null;
+      audio.ontimeupdate = null;
+      audio.src = ``;
+    }
   }
 
   _onPlayButtonClick() {
