@@ -4,21 +4,17 @@ import PropTypes from 'prop-types';
 class AudioPlayer extends React.PureComponent {
   constructor(props) {
     super(props);
-    // const {src} = props;
-    const {isPlaying, src} = props;
+    this._audioRef = React.createRef();
 
-    this._audio = new Audio(src);
+    const {isPlaying} = props;
+
+    // this._audio = new Audio(src);
 
     this.state = {
-      progress: this._audio.currentTime,
+      progress: 0,
       isLoading: true,
       isPlaying,
     };
-
-
-    this._audio.oncanplaythrough = () => this.setState({
-      isLoading: false,
-    });
 
     this._onPlayButtonClick = this._onPlayButtonClick.bind(this);
   }
@@ -35,7 +31,7 @@ class AudioPlayer extends React.PureComponent {
           onClick={this._onPlayButtonClick}
         />
         <div className="track__status">
-          <audio />
+          <audio ref={this._audioRef} />
         </div>
       </React.Fragment>
     );
@@ -43,42 +39,48 @@ class AudioPlayer extends React.PureComponent {
 
   componentDidMount() {
     const {src} = this.props;
-    // const {src} = question;
-    this._audio = new Audio(src);
-    this._audio.oncanplaythrough = () => this.setState({
+    const audio = this._audioRef.current;
+    audio.src = src;
+
+    audio.oncanplaythrough = () => this.setState({
       isLoading: false,
     });
 
-    this._audio.onplay = () => {
+    audio.onplay = () => {
       this.setState({
         isPlaying: true,
       });
     };
 
-    this._audio.onpause = () => this.setState({
+    audio.onpause = () => this.setState({
       isPlaying: false,
     });
 
-    this._audio.ontimeupdate = () => this.setState({
-      progress: this._audio.currentTime
+    audio.ontimeupdate = () => this.setState({
+      progress: audio.currentTime
     });
+
   }
 
+
   componentDidUpdate() {
+    const audio = this._audioRef.current;
+
     if (this.props.isPlaying) {
-      this._audio.play();
+      audio.play();
     } else {
-      this._audio.pause();
+      audio.pause();
     }
   }
 
   componentWillUnmount() {
-    this._audio.oncanplaythrough = null;
-    this._audio.onplay = null;
-    this._audio.onpause = null;
-    this._audio.ontimeupdate = null;
-    this._audio.src = ``;
-    this._audio = null;
+    const audio = this._audioRef.current;
+
+    audio.oncanplaythrough = null;
+    audio.onplay = null;
+    audio.onpause = null;
+    audio.ontimeupdate = null;
+    audio.src = ``;
   }
 
   _onPlayButtonClick() {
@@ -91,18 +93,7 @@ class AudioPlayer extends React.PureComponent {
 AudioPlayer.propTypes = {
   isPlaying: PropTypes.bool.isRequired,
   src: PropTypes.string.isRequired,
-  // question: PropTypes.shape({
-  //   song: PropTypes.shape({
-  //     artist: PropTypes.oneOf([`Пелагея`, `Краснознаменная дивизия имени моей бабушки`, `Lordi`]).isRequired,
-  //     src: PropTypes.string.isRequired,
-  //   }),
-  //   answers: PropTypes.arrayOf(PropTypes.shape({
-  //     src: PropTypes.string.isRequired,
-  //     artist: PropTypes.oneOf([`Пелагея`, `Краснознаменная дивизия имени моей бабушки`, `Lordi`]).isRequired,
-  //   })).isRequired,
-  //   // artist: PropTypes.oneOf([`Пелагея`, `Краснознаменная дивизия имени моей бабушки`, `Lordi`]).isRequired,
-  //   type: PropTypes.oneOf([`genre`, `artist`]).isRequired,
-  // }).isRequired,
+
   onPlayButtonClick: PropTypes.func.isRequired,
 };
 

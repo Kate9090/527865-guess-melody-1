@@ -29,7 +29,10 @@ class GenreQuestionScreen extends PureComponent {
             <AudioPlayer
               src={it.src}
               onPlayButtonClick={() => this.setState({
-                activePlayer: this.state.activePlayer === i ? -1 : i
+                activePlayer: this.state.activePlayer === i
+                  ?
+                  -1
+                  : i
               })
               }
               isPlaying={i === this.state.activePlayer}
