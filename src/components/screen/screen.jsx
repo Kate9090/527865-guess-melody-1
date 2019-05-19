@@ -10,10 +10,6 @@ class Screen extends Component {
   constructor(props) {
     super(props);
 
-    // const {
-    //   _handleGoToQuestion
-    // } = this.props;
-
     this._handleNumberOfScreen = this._handleNumberOfScreen.bind(this);
   }
 
@@ -21,13 +17,8 @@ class Screen extends Component {
     const {questions, question} = this.props;
 
     this.props.onUserAnswer(questions[question], userAnswer);
+    console.log(userAnswer);
   }
-
-  // _handleGoToQuestion(userAnswer) {
-  //   const {question} = this.props;
-  //   console.log(this.props);
-  //   this.props.onUserAnswer(question[0], userAnswer);
-  // }
 
   _getScreen(question) {
     if (!question) {

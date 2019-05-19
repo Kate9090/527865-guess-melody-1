@@ -20,7 +20,7 @@ const ActionCreator = ({
         isAnswerCorrect = userAnswer.artist === question.song.artist;
         break;
       case `genre`:
-        isAnswerCorrect = false;
+        isAnswerCorrect = true;
         break;
 
     }

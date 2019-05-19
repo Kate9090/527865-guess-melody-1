@@ -34,9 +34,7 @@ class ArtistQuestionScreen extends PureComponent {
               type="radio" name="answer"
               value={`answer-${i}`}
               id={`answer-${i}`}
-              onChange={() => onAnswer(
-                  // it.artist === song.artist
-              )
+              onChange={() => onAnswer(it)
               }
             />
             <label className="artist__name" htmlFor={`answer-${i}`}>
