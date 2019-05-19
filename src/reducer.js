@@ -5,8 +5,8 @@ const initialState = {
 };
 
 
-const actionCreator = ({
-  'INCREMENT STEP': (question, userAnswer) => {
+const ActionCreator = ({
+  'INCREMENT_STEP': (question, userAnswer) => {
     let isAnswerCorrect = false;
 
     switch (question.type) {
@@ -18,7 +18,7 @@ const actionCreator = ({
         break;
     }
     return {
-      type: `INCREMENT STEP`,
+      type: `INCREMENT_STEP`,
       payload: isAnswerCorrect ? 1 : 0,
     };
   },
@@ -32,7 +32,7 @@ const reducer = (state = initialState, action
     // }
 ) => {
   switch (action.type) {
-    case `INCREMENT STEP`:
+    case `INCREMENT_STEP`:
 
       return Object.assign({}, state, {
         step: state.step + action.payload,
@@ -43,4 +43,4 @@ const reducer = (state = initialState, action
   return state;
 };
 
-export {reducer, actionCreator};
+export {reducer, ActionCreator};

@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import actionCreator from '../../reducer';
+import {ActionCreator} from '../../reducer';
 
 import Screen from '../screen/screen.jsx';
 
@@ -80,7 +80,7 @@ const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
 const mapDispatchToProps = (dispatch) => ({
   onUserAnswer: (question, userAnswer) => {
 
-    dispatch(actionCreator[`INCREMENT STEP`](question, userAnswer));
+    dispatch(ActionCreator[`INCREMENT_STEP`](question, userAnswer));
   }
 });
 
