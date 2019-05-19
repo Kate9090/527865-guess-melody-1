@@ -9,18 +9,10 @@ import Screen from '../screen/screen.jsx';
 class App extends Component {
   constructor(props) {
     super(props);
-
-    // this.state = {
-    //   mistakes: 0,
-    // };
   }
 
-  // updateData(value) {
-  //   this.setState({mistakes: value});
-  // }
-
   render() {
-    const {questions, gameParams, step, mistakes, onUserAnswer} = this.props;
+    const {questions, gameParams, step, mistakes, onUserAnswer, onWelcomeScreenClick} = this.props;
 
     return <section>
       <header className="game__header">
@@ -52,7 +44,9 @@ class App extends Component {
       </header>
 
       <Screen questions={questions}
-        onUserAnswer={onUserAnswer} question={step} screenParams={gameParams} updateData={this.updateData}/>
+        onUserAnswer={onUserAnswer}
+        onWelcomeScreenClick={onWelcomeScreenClick}
+        question={step} screenParams={gameParams} updateData={this.updateData}/>
 
     </section>;
   }
@@ -70,6 +64,7 @@ App.propTypes = {
   step: PropTypes.number.isRequired,
   mistakes: PropTypes.number.isRequired,
   onUserAnswer: PropTypes.func.isRequired,
+  onWelcomeScreenClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
@@ -78,10 +73,12 @@ const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onUserAnswer: (question, userAnswer) => {
+  onWelcomeScreenClick: () =>
+    dispatch(ActionCreator[`INCREMENT_STEP_WELCOME`]()),
 
+  onUserAnswer: (question, userAnswer) => {
     dispatch(ActionCreator[`INCREMENT_STEP`](question, userAnswer));
-  }
+  },
 });
 
 export {App};

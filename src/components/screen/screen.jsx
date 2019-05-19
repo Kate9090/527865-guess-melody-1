@@ -10,6 +10,10 @@ class Screen extends Component {
   constructor(props) {
     super(props);
 
+    // const {
+    //   _handleGoToQuestion
+    // } = this.props;
+
     this._handleNumberOfScreen = this._handleNumberOfScreen.bind(this);
   }
 
@@ -19,15 +23,21 @@ class Screen extends Component {
     this.props.onUserAnswer(questions[question], userAnswer);
   }
 
+  // _handleGoToQuestion(userAnswer) {
+  //   const {question} = this.props;
+  //   console.log(this.props);
+  //   this.props.onUserAnswer(question[0], userAnswer);
+  // }
+
   _getScreen(question) {
     if (!question) {
       const {
-        screenParams,
+        screenParams, onWelcomeScreenClick,
       } = this.props;
 
       return <Welcome
         param={screenParams}
-        onClick={this._handleNumberOfScreen}
+        onClick={onWelcomeScreenClick}
       />;
     }
 
@@ -72,6 +82,7 @@ Screen.propTypes = {
   question: PropTypes.number.isRequired,
   onUserAnswer: PropTypes.func.isRequired,
   isAnswerCorrect: PropTypes.bool,
+  onWelcomeScreenClick: PropTypes.func.isRequired,
 };
 
 export default Screen;
