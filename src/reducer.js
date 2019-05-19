@@ -8,6 +8,7 @@ const initialState = {
 const ActionCreator = ({
   'INCREMENT_STEP': (question, userAnswer) => {
     let isAnswerCorrect = false;
+    console.log(`1` + question);
 
     switch (question.type) {
       case `artist`:
@@ -15,6 +16,9 @@ const ActionCreator = ({
         break;
       case `genre`:
         isAnswerCorrect = false;
+        break;
+      case undefined:
+        isAnswerCorrect = true;
         break;
     }
     return {
@@ -25,12 +29,7 @@ const ActionCreator = ({
   // payload: 1,
 });
 
-const reducer = (state = initialState, action
-    //   = {
-    //   type: `INCREMENT STEP`,
-    //   payload: 1,
-    // }
-) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case `INCREMENT_STEP`:
 
