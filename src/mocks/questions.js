@@ -4,19 +4,19 @@ const questions = [
     genre: `rock`,
     answers: [
       {
-        src: `https://commons.wikimedia.org/wiki/File:Beach_Bum_(ISRC_USUAN1100347).mp3`,
+        src: `https://upload.wikimedia.org/wikipedia/commons/e/e1/Beach_Bum_%28ISRC_USUAN1100347%29.mp3`,
         genre: `rock`,
       },
       {
-        src: `https://commons.wikimedia.org/wiki/File:Keef_Trouble_as_Dougie_Damone,_Hello_Mum.oga`,
+        src: `https://upload.wikimedia.org/wikipedia/commons/2/20/Keef_Trouble_as_Dougie_Damone%2C_Hello_Mum.oga`,
         genre: `pop`,
       },
       {
-        src: `https://commons.wikimedia.org/wiki/File:00_Jazz_Violin_Solo.ogg`,
+        src: `https://upload.wikimedia.org/wikipedia/commons/3/37/00_Jazz_Violin_Solo.ogg`,
         genre: `jazz`,
       },
       {
-        src: `https://commons.wikimedia.org/wiki/File:Afteryouvegone-first8bars.ogg`,
+        src: `https://upload.wikimedia.org/wikipedia/commons/5/59/Afteryouvegone-first8bars.ogg`,
         genre: `blues`,
       },
     ],
