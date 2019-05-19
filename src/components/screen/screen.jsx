@@ -17,7 +17,7 @@ class Screen extends Component {
     const {questions, question} = this.props;
 
     this.props.onUserAnswer(questions[question], userAnswer);
-    console.log(userAnswer);
+    // console.log(userAnswer);
   }
 
   _getScreen(question) {

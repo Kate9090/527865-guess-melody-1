@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducer';
 
 import Screen from '../screen/screen.jsx';
+import MistakesScreen from '../mistakes-screen/mistakes-screen.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -36,11 +37,7 @@ class App extends Component {
           <span className="timer__secs">00</span>
         </div>
 
-        <div className="game__mistakes">
-          {new Array(mistakes).map((i) =>
-            <div className="wrong" key={i}></div>
-          )}
-        </div>
+        <MistakesScreen mistakes={mistakes}/>
       </header>
 
       <Screen questions={questions}
