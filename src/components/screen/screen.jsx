@@ -9,22 +9,19 @@ import ArtistQuestionScreen from '../artist-question-screen/artist-question-scre
 class Screen extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      question: -1,
-    };
+
     this._handleNumberOfScreen = this._handleNumberOfScreen.bind(this);
   }
 
-  _handleNumberOfScreen() {
-    const {questions} = this.props;
+  _handleNumberOfScreen(userAnswer) {
+    const {questions, question, isAnswerCorrect, onUserAnswer} = this.props;
+    const {step} = question;
 
-    // console.log(questions);
 
-    this.setState({
-      question: this.state.question + 1 >= questions.length
-        ? -1
-        : this.state.question + 1,
-    });
+    if (isAnswerCorrect) {
+      onUserAnswer(questions[step], userAnswer);
+    }
+
   }
 
   _getScreen(question) {
@@ -39,10 +36,13 @@ class Screen extends Component {
       />;
     }
 
+    // console.log(question);
+
     switch (question.type) {
       case `genre`: return <GenreQuestionScreen
         question={question}
         onAnswer={this._handleNumberOfScreen}
+        key={`genre-question-screen-${this.state.question}`}
       />;
 
       case `artist`: return <ArtistQuestionScreen
@@ -73,6 +73,10 @@ Screen.propTypes = {
     gameTime: PropTypes.number.isRequired,
     errorCount: PropTypes.number.isRequired,
   }),
+  updateData: PropTypes.func,
+  question: PropTypes.number.isRequired,
+  onUserAnswer: PropTypes.func.isRequired,
+  isAnswerCorrect: PropTypes.bool,
 };
 
 export default Screen;
