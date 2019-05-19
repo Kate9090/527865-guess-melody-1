@@ -20,7 +20,7 @@ class App extends Component {
   // }
 
   render() {
-    const {questions, gameParams, step, mistakes} = this.props;
+    const {questions, gameParams, step, mistakes, onUserAnswer} = this.props;
 
     return <section>
       <header className="game__header">
@@ -52,7 +52,7 @@ class App extends Component {
       </header>
 
       <Screen questions={questions}
-        isAnswerCorrect={this.isAnswerCorrect} onUserAnswer={this.onUserAnswer} question={step} screenParams={gameParams} updateData={this.updateData}/>
+        onUserAnswer={onUserAnswer} question={step} screenParams={gameParams} updateData={this.updateData}/>
 
     </section>;
   }
@@ -69,6 +69,7 @@ App.propTypes = {
   }),
   step: PropTypes.number.isRequired,
   mistakes: PropTypes.number.isRequired,
+  onUserAnswer: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {

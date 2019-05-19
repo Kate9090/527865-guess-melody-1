@@ -14,13 +14,12 @@ class Screen extends Component {
   }
 
   _handleNumberOfScreen(userAnswer) {
-    const {questions, question, isAnswerCorrect, onUserAnswer} = this.props;
+    const {questions, question, onUserAnswer} = this.props;
     const {step} = question;
 
 
-    if (isAnswerCorrect) {
-      onUserAnswer(questions[step], userAnswer);
-    }
+    onUserAnswer(questions[step], userAnswer);
+
 
   }
 
@@ -42,7 +41,7 @@ class Screen extends Component {
       case `genre`: return <GenreQuestionScreen
         question={question}
         onAnswer={this._handleNumberOfScreen}
-        key={`genre-question-screen-${this.state.question}`}
+        key={`genre-question-screen-${this.question}`}
       />;
 
       case `artist`: return <ArtistQuestionScreen
@@ -55,8 +54,8 @@ class Screen extends Component {
   }
 
   render() {
-    const {questions} = this.props;
-    const {question} = this.state;
+    const {questions, question} = this.props;
+    // const {question} = step;
 
     return <section>
       {this._getScreen(questions[question])}
