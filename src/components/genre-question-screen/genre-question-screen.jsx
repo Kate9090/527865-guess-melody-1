@@ -6,8 +6,11 @@ import AudioPlayer from '../audioplayer/audioplayer.jsx';
 class GenreQuestionScreen extends PureComponent {
   constructor(props) {
     super(props);
+    const {question} = this.props;
+    const {answers} = question;
     this.state = {
       activePlayer: -1,
+      userAnswer: new Array(answers.lengh).fill(false),
     };
   }
 
@@ -22,7 +25,7 @@ class GenreQuestionScreen extends PureComponent {
       <h2 className="game__title">Выберите {genre} треки</h2>
       <form className="game__tracks" onSubmit={(evt)=> {
         evt.preventDefault();
-        onAnswer();
+        onAnswer(this.state.userAnswer);
       }}>
         {answers.map((it, i) => (
           <div className="track" key = {`answer-${i}`}>

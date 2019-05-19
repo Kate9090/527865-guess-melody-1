@@ -1,15 +1,26 @@
 import React, {Component} from "react";
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+
+import actionCreator from '../../reducer';
 
 import Screen from '../screen/screen.jsx';
 
 class App extends Component {
   constructor(props) {
     super(props);
+
+    // this.state = {
+    //   mistakes: 0,
+    // };
   }
 
+  // updateData(value) {
+  //   this.setState({mistakes: value});
+  // }
+
   render() {
-    const {questions, gameParams} = this.props;
+    const {questions, gameParams, step, mistakes} = this.props;
 
     return <section>
       <header className="game__header">
@@ -34,13 +45,14 @@ class App extends Component {
         </div>
 
         <div className="game__mistakes">
-          <div className="wrong"></div>
-          <div className="wrong"></div>
-          <div className="wrong"></div>
+          {new Array(mistakes).map((i) =>
+            <div className="wrong" key={i}></div>
+          )}
         </div>
       </header>
 
-      <Screen questions={questions} screenParams={gameParams}/>
+      <Screen questions={questions}
+        isAnswerCorrect={this.isAnswerCorrect} onUserAnswer={this.onUserAnswer} question={step} screenParams={gameParams} updateData={this.updateData}/>
 
     </section>;
   }
@@ -55,6 +67,25 @@ App.propTypes = {
     gameTime: PropTypes.number.isRequired,
     errorCount: PropTypes.number.isRequired,
   }),
+  step: PropTypes.number.isRequired,
+  mistakes: PropTypes.number.isRequired,
 };
 
-export default App;
+const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
+  step: state.step,
+  mistakes: state.mistakes,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onUserAnswer: (question, userAnswer) => {
+
+    dispatch(actionCreator[`INCREMENT STEP`](question, userAnswer));
+  }
+});
+
+export {App};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(App);
