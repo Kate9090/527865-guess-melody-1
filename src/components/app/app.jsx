@@ -43,7 +43,10 @@ class App extends Component {
       <Screen questions={questions}
         onUserAnswer={onUserAnswer}
         onWelcomeScreenClick={onWelcomeScreenClick}
-        question={step} screenParams={gameParams} updateData={this.updateData}/>
+        question={step}
+        screenParams={gameParams}
+        updateData={this.updateData}
+        mistakes={mistakes}/>
 
     </section>;
   }
@@ -52,14 +55,14 @@ class App extends Component {
 App.propTypes = {
   questions: PropTypes.arrayOf(PropTypes.shape({
     answers: PropTypes.array.isRequired,
-
   })).isRequired,
   gameParams: PropTypes.shape({
     gameTime: PropTypes.number.isRequired,
-    errorCount: PropTypes.number.isRequired,
+    maxMistakes: PropTypes.number.isRequired,
   }),
   step: PropTypes.number.isRequired,
   mistakes: PropTypes.number.isRequired,
+
   onUserAnswer: PropTypes.func.isRequired,
   onWelcomeScreenClick: PropTypes.func.isRequired,
 };
@@ -71,10 +74,10 @@ const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
 
 const mapDispatchToProps = (dispatch) => ({
   onWelcomeScreenClick: () =>
-    dispatch(ActionCreator[`INCREMENT_STEP_WELCOME`]()),
+    dispatch(ActionCreator[`INCREMENT_STEP`]()),
 
-  onUserAnswer: (question, userAnswer) => {
-    dispatch(ActionCreator[`INCREMENT_STEP`](question, userAnswer));
+  onUserAnswer: (question, userAnswer, mistakes, maxMistakes) => {
+    dispatch(ActionCreator[`INCREMENT_MISTAKES`](question, userAnswer, mistakes, maxMistakes));
   },
 });
 

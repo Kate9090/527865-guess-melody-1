@@ -14,10 +14,12 @@ class Screen extends Component {
   }
 
   _handleNumberOfScreen(userAnswer) {
-    const {questions, question} = this.props;
+    const {questions, question, mistakes, screenParams} = this.props;
+    const {maxMistakes} = screenParams;
 
-    this.props.onUserAnswer(questions[question], userAnswer);
-    // console.log(userAnswer);
+    console.log(`mistakes = ` + mistakes);
+
+    this.props.onUserAnswer(questions[question], userAnswer, mistakes, maxMistakes);
   }
 
   _getScreen(question) {
@@ -32,7 +34,6 @@ class Screen extends Component {
       />;
     }
 
-    // console.log(question);
 
     switch (question.type) {
       case `genre`: return <GenreQuestionScreen
@@ -52,7 +53,6 @@ class Screen extends Component {
 
   render() {
     const {questions, question} = this.props;
-    // const {question} = step;
 
     return <section>
       {this._getScreen(questions[question])}
@@ -67,13 +67,14 @@ Screen.propTypes = {
   })).isRequired,
   screenParams: PropTypes.shape({
     gameTime: PropTypes.number.isRequired,
-    errorCount: PropTypes.number.isRequired,
+    maxMistakes: PropTypes.number.isRequired,
   }),
   updateData: PropTypes.func,
   question: PropTypes.number.isRequired,
   onUserAnswer: PropTypes.func.isRequired,
   isAnswerCorrect: PropTypes.bool,
   onWelcomeScreenClick: PropTypes.func.isRequired,
+  mistakes: PropTypes.number.isRequired,
 };
 
 export default Screen;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Welcome = (props) => {
   const {param, onClick} = props;
-  const {gameTime, errorCount} = param;
+  const {gameTime, maxMistakes} = param;
   // console.log(param);
 
   return <div>
@@ -16,7 +16,7 @@ const Welcome = (props) => {
       <p className="welcome__text">Правила просты:</p>
       <ul className="welcome__rules-list">
         <li>За {gameTime} минут нужно ответить на все вопросы.</li>
-        <li>Можно допустить {errorCount} ошибки.</li>
+        <li>Можно допустить {maxMistakes} ошибки.</li>
       </ul>
       <p className="welcome__text">Удачи!</p>
     </section>
@@ -26,7 +26,7 @@ const Welcome = (props) => {
 Welcome.propTypes = {
   param: PropTypes.shape({
     gameTime: PropTypes.number.isRequired,
-    errorCount: PropTypes.number.isRequired,
+    maxMistakes: PropTypes.number.isRequired,
   }),
   onClick: PropTypes.func,
 };

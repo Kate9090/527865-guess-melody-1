@@ -6,12 +6,12 @@ const initialState = {
 
 
 const ActionCreator = ({
-  'INCREMENT_STEP_WELCOME': () => ({
-    type: `INCREMENT_STEP_WELCOME`,
+  'INCREMENT_STEP': () => ({
+    type: `INCREMENT_STEP`,
     payload: 1,
   }),
 
-  'INCREMENT_STEP': (question, userAnswer) => {
+  'INCREMENT_MISTAKES': (question, userAnswer, mistakes, maxMistakes) => {
     let isAnswerCorrect = false;
     // console.log(`1` + question);
 
@@ -20,13 +20,21 @@ const ActionCreator = ({
         isAnswerCorrect = userAnswer.artist === question.song.artist;
         break;
       case `genre`:
-        isAnswerCorrect = true;
+        isAnswerCorrect =
+          userAnswer.every((it, i) => it === (
+            question.answers[i].genre === question.genre
+          ));
         break;
-
+    }
+    // if (!isAnswerCorrect && mistakes + 1 >= maxMistakes) {
+    if (mistakes > maxMistakes) {
+      return {
+        type: `RESET`,
+      };
     }
     return {
       type: `INCREMENT_STEP`,
-      payload: isAnswerCorrect ? 1 : 0,
+      payload: isAnswerCorrect ? 0 : 1,
     };
   },
   // payload: 1,
@@ -34,15 +42,19 @@ const ActionCreator = ({
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case `INCREMENT_MISTAKES`:
+      return Object.assign({}, state, {
+        step: state.step + action.payload,
+        mistakes: state.mistakes + action.payload,
+      });
     case `INCREMENT_STEP`:
-
       return Object.assign({}, state, {
         step: state.step + action.payload,
         mistakes: 0,
       });
-    case `INCREMENT_STEP_WELCOME`:
+    case `RESET`:
       return Object.assign({}, state, {
-        step: state.step + action.payload,
+        step: -1,
         mistakes: 0,
       });
   }
