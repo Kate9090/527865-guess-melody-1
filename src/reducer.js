@@ -33,7 +33,7 @@ const ActionCreator = ({
       };
     }
     return {
-      type: `INCREMENT_STEP`,
+      type: `INCREMENT_MISTAKES`,
       payload: isAnswerCorrect ? 0 : 1,
       // stepPayload: isAnswerCorrect ? 1 : 0,
     };

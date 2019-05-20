@@ -34,6 +34,8 @@ class ArtistQuestionScreen extends PureComponent {
       answers, song,
     } = question;
 
+    console.log(song);
+
     return <section className="game__screen">
       <h2 className="game__title">Кто исполняет эту песню?</h2>
       <div className="game__track">

@@ -76,6 +76,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator[`INCREMENT_STEP`]()),
 
   onUserAnswer: (question, userAnswer, mistakes, maxMistakes) => {
+    dispatch(ActionCreator[`INCREMENT_STEP`]());
     dispatch(ActionCreator[`INCREMENT_MISTAKES`](question, userAnswer, mistakes, maxMistakes));
   },
 });
