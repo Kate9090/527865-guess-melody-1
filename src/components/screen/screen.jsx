@@ -38,13 +38,13 @@ class Screen extends Component {
     switch (question.type) {
       case `genre`: return <GenreQuestionScreen
         question={question}
-        onAnswer={this._handleNumberOfScreen}
+        handleSubmit={this._handleNumberOfScreen}
         key={`genre-question-screen-${question}`}
       />;
 
       case `artist`: return <ArtistQuestionScreen
         question={question}
-        onAnswer={this._handleNumberOfScreen}
+        handleSubmit={this._handleNumberOfScreen}
       />;
     }
 

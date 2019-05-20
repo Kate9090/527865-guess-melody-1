@@ -8,10 +8,27 @@ class ArtistQuestionScreen extends PureComponent {
     super(props);
     this.state = {
       isPlaying: false,
+      answer: {},
     };
+
+    this._handleAnswer = this._handleAnswer.bind(this);
+    this._changePlayerState = this._changePlayerState.bind(this);
   }
+
+  _handleAnswer(answer) {
+    this.setState({answer});
+    this.props.handleSubmit(answer);
+    this.setState({isPlaying: false});
+  }
+
+  _changePlayerState() {
+    this.setState({
+      isPlaying: !this.state.isPlaying
+    });
+  }
+
   render() {
-    const {question, onAnswer} = this.props;
+    const {question} = this.props;
     const {isPlaying} = this.state;
     const {
       answers, song,
@@ -22,23 +39,23 @@ class ArtistQuestionScreen extends PureComponent {
       <div className="game__track">
         <AudioPlayer
           isPlaying={isPlaying}
-          onPlayButtonClick={() => this.setState({isPlaying: !isPlaying})}
+          onPlayButtonClick={() => this._changePlayerState}
           src={song.src}
         />
       </div>
 
-      <form className="game__artist" onChange={onAnswer}>
-        {answers.map((it, i) => (
-          <div className="artist" key = {`answer-${i}`}>
+      <form className="game__artist">
+        {answers.map((it) => (
+          <div className="artist" key = {`${it.artist}`}>
             <input className="artist__input visually-hidden"
               type="radio" name="answer"
-              value={`answer-${i}`}
-              id={`answer-${i}`}
-              onChange={() => onAnswer(it)
+              value={it.artist}
+              id={it.artist}
+              onChange={() => this._handleAnswer(it)
               }
             />
-            <label className="artist__name" htmlFor={`answer-${i}`}>
-              <img className="artist__picture" src="http://placehold.it/134x134" alt={it.artist} />
+            <label className="artist__name" htmlFor={it.artist}>
+              <img className="artist__picture" src={it.src} alt={it.artist} />
               {it.artist}
             </label>
           </div>
@@ -63,6 +80,7 @@ ArtistQuestionScreen.propTypes = {
     // artist: PropTypes.oneOf([`Пелагея`, `Краснознаменная дивизия имени моей бабушки`, `Lordi`]).isRequired,
     type: PropTypes.oneOf([`genre`, `artist`]).isRequired,
   }).isRequired,
+  handleSubmit: PropTypes.func,
 };
 
 export default ArtistQuestionScreen;

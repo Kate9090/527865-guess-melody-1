@@ -38,7 +38,7 @@ class GenreQuestionScreen extends PureComponent {
       });
 
       return;
-    }s
+    }
 
     this.setState({answers: [...answers, answer]});
     // console.log(answers);
