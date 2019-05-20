@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import MistakesScreen from '@/components/game-mistakes/game-mistakes';
+import MistakesScreen from './mistakes-screen.jsx';
 
 describe(`GameMistakes`, () => {
   it(`renders correctly with 1 mistakes`, () => {

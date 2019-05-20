@@ -17,7 +17,7 @@ class Screen extends Component {
     const {questions, question, mistakes, screenParams} = this.props;
     const {maxMistakes} = screenParams;
 
-    console.log(`mistakes = ` + mistakes);
+    // console.log(`mistakes = ` + mistakes);
 
     this.props.onUserAnswer(questions[question], userAnswer, mistakes, maxMistakes);
   }
