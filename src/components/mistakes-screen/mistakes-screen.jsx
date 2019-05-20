@@ -1,22 +1,20 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 
-class MistakesScreen extends Component {
-  constructor(props) {
-    super(props);
-  }
+const MistakesScreen = ({mistakes}) => {
+  const mistakesArray = Array(mistakes).fill(1);
 
-  render() {
-    const {mistakes} = this.props;
+  return <div className="game__mistakes">
+    {mistakesArray.map((mistake, i) =>
+      <div className="wrong" key={`mistake-${i}`}></div>
+    )}
+  </div>;
+};
 
-    return <div className="game__mistakes">
-      {new Array(mistakes).map((i) =>
-        <div className="wrong" key={i}></div>
-      )}
-    </div>;
-  }
-}
+MistakesScreen.defaultProps = {
+  mistakes: 0,
+};
 
 MistakesScreen.propTypes = {
   mistakes: PropTypes.number.isRequired,

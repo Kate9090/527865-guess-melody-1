@@ -26,8 +26,8 @@ const ActionCreator = ({
           ));
         break;
     }
-    // if (!isAnswerCorrect && mistakes + 1 >= maxMistakes) {
-    if (mistakes > maxMistakes) {
+    if (!isAnswerCorrect && mistakes + 1 >= maxMistakes) {
+    // if (mistakes > maxMistakes) {
       return {
         type: `RESET`,
       };
@@ -53,10 +53,7 @@ const reducer = (state = initialState, action) => {
         mistakes: 0,
       });
     case `RESET`:
-      return Object.assign({}, state, {
-        step: -1,
-        mistakes: 0,
-      });
+      return Object.assign({}, state, initialState);
   }
 
   return state;
