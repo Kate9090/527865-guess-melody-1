@@ -35,6 +35,7 @@ const ActionCreator = ({
     return {
       type: `INCREMENT_STEP`,
       payload: isAnswerCorrect ? 0 : 1,
+      // stepPayload: isAnswerCorrect ? 1 : 0,
     };
   },
   // payload: 1,
@@ -44,13 +45,11 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case `INCREMENT_MISTAKES`:
       return Object.assign({}, state, {
-        step: state.step + action.payload,
         mistakes: state.mistakes + action.payload,
       });
     case `INCREMENT_STEP`:
       return Object.assign({}, state, {
         step: state.step + action.payload,
-        mistakes: 0,
       });
     case `RESET`:
       return Object.assign({}, state, initialState);

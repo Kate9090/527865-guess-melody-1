@@ -21,6 +21,10 @@ it(`simulates click on welcome screen as an answer on first questions`, () =>{
     screenParams={mockParams}
     questions={mockQuestion}
     onClick={buttonClick}
+    question={1}
+    onUserAnswer={jest.fn}
+    onWelcomeScreenClick={jest.fn}
+    mistakes={0}
   />);
 
   const button = screen.find(`button`);
@@ -28,7 +32,7 @@ it(`simulates click on welcome screen as an answer on first questions`, () =>{
   button.simulate(`click`);
   screen.update();
 
-  const currentQuestion = screen.state(`question`);
+  const currentQuestion = screen.question;
   expect(currentQuestion).toEqual(0);
 
   // const title = app.find(`.game__title`);

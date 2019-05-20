@@ -12,10 +12,23 @@ it(`should increment current step by a given number`, () => {
     step: -1,
     mistakes: 0,
   }, {
-    type: `INCREMENT STEP`,
+    type: `INCREMENT_STEP`,
     payload: 1,
   })).toEqual({
     step: 0,
     mistakes: 0,
+  });
+});
+
+it(`should increment mistakes`, () => {
+  expect(reducer({
+    step: 0,
+    mistakes: 0,
+  }, {
+    type: `INCREMENT_MISTAKES`,
+    payload: 1,
+  })).toEqual({
+    step: 0,
+    mistakes: 1,
   });
 });

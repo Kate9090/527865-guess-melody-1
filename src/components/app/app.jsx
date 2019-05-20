@@ -47,7 +47,6 @@ class App extends Component {
         screenParams={gameParams}
         updateData={this.updateData}
         mistakes={mistakes}/>
-
     </section>;
   }
 }

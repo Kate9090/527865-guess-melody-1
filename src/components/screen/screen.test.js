@@ -14,6 +14,11 @@ it(`renders correctly screens`, () => {
     .create(<Screen
       screenParams={mockParams}
       questions={mockQuestion}
+      question={1}
+      onUserAnswer={jest.fn}
+      onWelcomeScreenClick={jest.fn}
+      mistakes={0}
+
     />)
     .toJSON();
   expect(tree).toMatchSnapshot();
