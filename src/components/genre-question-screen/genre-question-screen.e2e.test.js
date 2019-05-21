@@ -15,7 +15,7 @@ it(`simulates chose checkbox on GenreQuestionScreen as an answer on the question
   const onButtonSubmit = jest.fn();
   const formSendPrevention = jest.fn();
   const genreQuestion = mount(<GenreQuestionScreen
-    onAnswer={onButtonSubmit}
+    handleSubmit={onButtonSubmit}
     question={mockQuestion}
   />);
 

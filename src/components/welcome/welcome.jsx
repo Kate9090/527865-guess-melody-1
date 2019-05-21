@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 const Welcome = (props) => {
-  const {param, onClick} = props;
+  const {param, handleGameStart} = props;
   const {gameTime, maxMistakes} = param;
   // console.log(param);
 
@@ -11,7 +11,7 @@ const Welcome = (props) => {
       <div className="welcome__logo">
         <img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83" />
       </div>
-      <button onClick={onClick} className="welcome__button"><span className="visually-hidden">Начать игру</span></button>
+      <button onClick={() => handleGameStart()} className="welcome__button"><span className="visually-hidden">Начать игру</span></button>
       <h2 className="welcome__rules-title">Правила игры</h2>
       <p className="welcome__text">Правила просты:</p>
       <ul className="welcome__rules-list">
@@ -28,7 +28,7 @@ Welcome.propTypes = {
     gameTime: PropTypes.number.isRequired,
     maxMistakes: PropTypes.number.isRequired,
   }),
-  onClick: PropTypes.func,
+  handleGameStart: PropTypes.func,
 };
 
 export default Welcome;

@@ -17,6 +17,7 @@ exports[`renders correctly welcome screen 1`] = `
     </div>
     <button
       className="welcome__button"
+      onClick={[Function]}
     >
       <span
         className="visually-hidden"

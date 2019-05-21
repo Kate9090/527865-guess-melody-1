@@ -16,7 +16,7 @@ it(`simulates click event`, () =>{
 
   const welcome = shallow(<Welcome
     param = {mock}
-    onClick={buttonClick}
+    handleGameStart={buttonClick}
   />);
 
   const startButton = welcome.find(`button`);
