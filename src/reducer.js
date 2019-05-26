@@ -1,7 +1,14 @@
+import questions from './mocks/questions';
+import params from './mocks/parametrs';
+
+const gameParam = params;
+const questionsArray = questions;
 
 const initialState = {
   step: -1,
   mistakes: 0,
+  gameParam,
+  questionsArray
 };
 
 

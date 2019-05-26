@@ -13,7 +13,7 @@ class App extends Component {
   }
 
   render() {
-    const {questions, gameParams, step, mistakes, onUserAnswer, onWelcomeScreenClick} = this.props;
+    const {step, mistakes, onUserAnswer, onWelcomeScreenClick} = this.props;
 
     return <section>
       <header className="game__header">
@@ -40,11 +40,12 @@ class App extends Component {
         <MistakesScreen mistakes={mistakes}/>
       </header>
 
-      <Screen questions={questions}
+      <Screen
+        // questions={questions}
         onUserAnswer={onUserAnswer}
         onWelcomeScreenClick={onWelcomeScreenClick}
         question={step}
-        screenParams={gameParams}
+        // screenParams={gameParams}
         updateData={this.updateData}
         mistakes={mistakes}/>
     </section>;
@@ -52,13 +53,13 @@ class App extends Component {
 }
 
 App.propTypes = {
-  questions: PropTypes.arrayOf(PropTypes.shape({
-    answers: PropTypes.array.isRequired,
-  })).isRequired,
-  gameParams: PropTypes.shape({
-    gameTime: PropTypes.number.isRequired,
-    maxMistakes: PropTypes.number.isRequired,
-  }),
+  // questions: PropTypes.arrayOf(PropTypes.shape({
+  //   answers: PropTypes.array.isRequired,
+  // })).isRequired,
+  // gameParams: PropTypes.shape({
+  //   gameTime: PropTypes.number.isRequired,
+  //   maxMistakes: PropTypes.number.isRequired,
+  // }),
   step: PropTypes.number.isRequired,
   mistakes: PropTypes.number.isRequired,
 

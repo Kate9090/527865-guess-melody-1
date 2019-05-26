@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 import Welcome from '../welcome/welcome.jsx';
 import GenreQuestionScreen from '../genre-question-screen/genre-question-screen.jsx';
@@ -62,7 +63,6 @@ class Screen extends Component {
 
 Screen.propTypes = {
   questions: PropTypes.arrayOf(PropTypes.shape({
-
     answers: PropTypes.array.isRequired,
   })).isRequired,
   screenParams: PropTypes.shape({
@@ -77,4 +77,14 @@ Screen.propTypes = {
   mistakes: PropTypes.number.isRequired,
 };
 
-export default Screen;
+const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
+  questions: state.questionsArray,
+  screenParams: state.gameParam,
+});
+
+export {Screen};
+
+export default connect(
+    mapStateToProps
+)(Screen);
+
