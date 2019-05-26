@@ -15,7 +15,7 @@ class App extends Component {
   render() {
     const {step, mistakes, onUserAnswer, onWelcomeScreenClick} = this.props;
 
-    return <section>
+    return <>
       <header className="game__header">
         <a className="game__back" href="#">
           <span className="visually-hidden">Сыграть ещё раз</span>
@@ -48,7 +48,7 @@ class App extends Component {
         // screenParams={gameParams}
         updateData={this.updateData}
         mistakes={mistakes}/>
-    </section>;
+    </>;
   }
 }
 

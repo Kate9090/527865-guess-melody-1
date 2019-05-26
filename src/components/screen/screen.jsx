@@ -55,9 +55,9 @@ class Screen extends Component {
   render() {
     const {questions, question} = this.props;
 
-    return <section>
+    return <>
       {this._getScreen(questions[question])}
-    </section>;
+    </>;
   }
 }
 
