@@ -29,12 +29,10 @@ class Screen extends Component {
   _getScreen(question) {
     if (!question) {
       const {
-        // screenParams,
         onWelcomeScreenClick,
       } = this.props;
 
       return <Welcome
-        // param={screenParams}
         handleGameStart={onWelcomeScreenClick}
       />;
     }

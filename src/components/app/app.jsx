@@ -4,8 +4,9 @@ import {connect} from 'react-redux';
 
 import {ActionCreator} from '../../reducer';
 
-import Screen from '../screen/screen.jsx';
 import MistakesScreen from '../mistakes-screen/mistakes-screen.jsx';
+
+import Screen from '../screen/screen.jsx';
 
 
 class App extends Component {
@@ -14,7 +15,12 @@ class App extends Component {
   }
 
   render() {
-    const {step, mistakes, onUserAnswer, onWelcomeScreenClick} = this.props;
+    const {
+      step,
+      mistakes,
+      onUserAnswer,
+      onWelcomeScreenClick
+    } = this.props;
 
     return <>
       <header className="game__header">
@@ -42,7 +48,6 @@ class App extends Component {
       </header>
 
       <Screen
-        // questions={questions}
         onUserAnswer={onUserAnswer}
         onWelcomeScreenClick={onWelcomeScreenClick}
         question={step}
@@ -82,6 +87,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator[`INCREMENT_MISTAKES`](question, userAnswer, mistakes, maxMistakes));
   },
 });
+
+// App.registerComponentWithRedux('app.playground.WelcomeScreen', () => Screen, Provider, store);
 
 export {App};
 
