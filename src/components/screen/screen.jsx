@@ -15,22 +15,26 @@ class Screen extends Component {
   }
 
   _handleNumberOfScreen(userAnswer) {
-    const {questions, question, mistakes, screenParams} = this.props;
-    const {maxMistakes} = screenParams;
+    const {questions, question,
+      // mistakes,
+      // screenParams
+    } = this.props;
+    // const {maxMistakes} = screenParams;
 
-    // console.log(`mistakes = ` + mistakes);
-
-    this.props.onUserAnswer(questions[question], userAnswer, mistakes, maxMistakes);
+    this.props.onUserAnswer(questions[question], userAnswer
+        // mistakes, maxMistakes
+    );
   }
 
   _getScreen(question) {
     if (!question) {
       const {
-        screenParams, onWelcomeScreenClick,
+        // screenParams,
+        onWelcomeScreenClick,
       } = this.props;
 
       return <Welcome
-        param={screenParams}
+        // param={screenParams}
         handleGameStart={onWelcomeScreenClick}
       />;
     }
@@ -65,21 +69,20 @@ Screen.propTypes = {
   questions: PropTypes.arrayOf(PropTypes.shape({
     answers: PropTypes.array.isRequired,
   })).isRequired,
-  screenParams: PropTypes.shape({
-    gameTime: PropTypes.number.isRequired,
-    maxMistakes: PropTypes.number.isRequired,
-  }),
+  // screenParams: PropTypes.shape({
+  //   gameTime: PropTypes.number.isRequired,
+  //   maxMistakes: PropTypes.number.isRequired,
+  // }),
   updateData: PropTypes.func,
   question: PropTypes.number.isRequired,
   onUserAnswer: PropTypes.func.isRequired,
   isAnswerCorrect: PropTypes.bool,
   onWelcomeScreenClick: PropTypes.func.isRequired,
-  mistakes: PropTypes.number.isRequired,
+  // mistakes: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
   questions: state.questionsArray,
-  screenParams: state.gameParam,
 });
 
 export {Screen};

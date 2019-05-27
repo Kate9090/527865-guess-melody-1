@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Screen from './screen.jsx';
+import {Screen} from './screen.jsx';
 
 import questions from '../../mocks/questions';
 import parametrs from '../../mocks/parametrs';

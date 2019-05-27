@@ -20,7 +20,6 @@ const ActionCreator = ({
 
   'INCREMENT_MISTAKES': (question, userAnswer, mistakes, maxMistakes) => {
     let isAnswerCorrect = false;
-    // console.log(`1` + question);
 
     switch (question.type) {
       case `artist`:
@@ -34,7 +33,7 @@ const ActionCreator = ({
         break;
     }
     if (!isAnswerCorrect && mistakes + 1 >= maxMistakes) {
-    // if (mistakes > maxMistakes) {
+
       return {
         type: `RESET`,
       };

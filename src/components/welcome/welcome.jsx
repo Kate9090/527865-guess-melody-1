@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
+import {connect} from 'react-redux';
+
+
 const Welcome = (props) => {
   const {param, handleGameStart} = props;
   const {gameTime, maxMistakes} = param;
-  // console.log(param);
 
   return <section className="welcome">
     <div className="welcome__logo">
@@ -25,8 +27,16 @@ Welcome.propTypes = {
   param: PropTypes.shape({
     gameTime: PropTypes.number.isRequired,
     maxMistakes: PropTypes.number.isRequired,
-  }),
+  }).isRequired,
   handleGameStart: PropTypes.func,
 };
 
-export default Welcome;
+const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
+  param: state.gameParam,
+});
+
+export {Welcome};
+
+export default connect(
+    mapStateToProps
+)(Welcome);

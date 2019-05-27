@@ -1,8 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-// import questions from './mocks/questions';
-// import params from './mocks/parametrs';
 
 import {Provider} from 'react-redux';
 import {reducer} from './reducer';
@@ -15,10 +13,7 @@ const store = createStore(reducer);
 const init = () => {
 
   ReactDOM.render(<Provider store={store}>
-    <App
-      // gameParams={gameParametrs}
-      // questions={gameQuestions}
-    />
+    <App />
   </Provider>, document.querySelector(`.main`));
 };
 

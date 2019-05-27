@@ -5,39 +5,18 @@ import {mount} from 'enzyme';
 
 import AudioPlayer from './audioplayer.jsx';
 
+import questions from '../../mocks/questions';
+const srcSong = questions[1].song.src;
+
 Enzyme.configure({adapter: new Adapter()});
 
-const mock = {
-  question: {
-    type: `genre`,
-    genre: `rock`,
-    song: {
-      artist: `Пелагея`,
-      src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
-    },
-    answers: [
-      {
-        img: `path`,
-        genre: `rock`,
-      },
-      {
-        img: `path`,
-        genre: `rock`,
-      },
-      {
-        img: `path`,
-        genre: `rock`,
-      },
-    ],
-  },
-};
 
 it(`simulates click on welcome screen as an answer on first questions`, () =>{
-  const {question} = mock;
+  const {src} = srcSong;
   const buttonClickPlay = jest.fn();
 
   const player = mount(<AudioPlayer
-    src={question.song.src}
+    src={src}
     isPlaying
     onPlayButtonClick = {buttonClickPlay}
   />);

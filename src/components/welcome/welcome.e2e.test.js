@@ -3,7 +3,7 @@ import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {shallow} from 'enzyme';
 
-import Welcome from './welcome.jsx';
+import {Welcome} from './welcome.jsx';
 
 import parametrs from '../../mocks/parametrs';
 

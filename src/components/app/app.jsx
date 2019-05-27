@@ -7,6 +7,7 @@ import {ActionCreator} from '../../reducer';
 import Screen from '../screen/screen.jsx';
 import MistakesScreen from '../mistakes-screen/mistakes-screen.jsx';
 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -45,9 +46,9 @@ class App extends Component {
         onUserAnswer={onUserAnswer}
         onWelcomeScreenClick={onWelcomeScreenClick}
         question={step}
-        // screenParams={gameParams}
         updateData={this.updateData}
-        mistakes={mistakes}/>
+        // mistakes={mistakes}
+      />
     </>;
   }
 }
