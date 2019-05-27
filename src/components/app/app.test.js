@@ -10,17 +10,9 @@ import {createStore} from 'redux';
 
 const store = createStore(reducer);
 
-// import questions from '../../mocks/questions';
-// import parametrs from '../../mocks/parametrs';
-
-// const mockQuestion = questions;
-// const mockParams = parametrs;
-
 it(`renders correctly app screen`, () => {
   const tree = renderer
     .create(<Provider store={store}><App
-      // gameParams={mockParams}
-      // questions={mockQuestion}
       question={1}
       onUserAnswer={jest.fn}
       onWelcomeScreenClick={jest.fn}

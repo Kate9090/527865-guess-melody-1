@@ -59,13 +59,6 @@ class App extends Component {
 }
 
 App.propTypes = {
-  // questions: PropTypes.arrayOf(PropTypes.shape({
-  //   answers: PropTypes.array.isRequired,
-  // })).isRequired,
-  // gameParams: PropTypes.shape({
-  //   gameTime: PropTypes.number.isRequired,
-  //   maxMistakes: PropTypes.number.isRequired,
-  // }),
   step: PropTypes.number.isRequired,
   mistakes: PropTypes.number.isRequired,
 
@@ -87,8 +80,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator[`INCREMENT_MISTAKES`](question, userAnswer, mistakes, maxMistakes));
   },
 });
-
-// App.registerComponentWithRedux('app.playground.WelcomeScreen', () => Screen, Provider, store);
 
 export {App};
 

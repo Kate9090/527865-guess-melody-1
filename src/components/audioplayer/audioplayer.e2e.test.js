@@ -29,8 +29,4 @@ it(`simulates click on welcome screen as an answer on first questions`, () =>{
   const currentPlayState = player.state(`isPlaying`);
   expect(currentPlayState).toEqual(true);
 
-  // const title = app.find(`.game__title`);
-  // expect(title).toHaveLength(1);
-
-  // expect(title.text().indexOf(`rock`).toBeGreaterThanOrEqual(0));
 });
