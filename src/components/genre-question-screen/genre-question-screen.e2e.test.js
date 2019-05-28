@@ -31,7 +31,7 @@ it(`onAnswer callback have answers array after submit form`, () => {
   // const {question} = mockQuestion;
   const onButtonSubmit = jest.fn();
   const formSendPrevention = jest.fn();
-  const expectedAnswer = [true, false, false, false];
+  const expectedAnswer = [true, true, false, false];
 
   const genreQuestionScreen = mount(
       <GenreQuestionScreen
