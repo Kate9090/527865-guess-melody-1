@@ -6,17 +6,18 @@ import {mount} from 'enzyme';
 import AudioPlayer from './audioplayer.jsx';
 
 import questions from '../../mocks/questions';
-const srcSong = questions[1].song.src;
+const question = questions;
+// const srcSong = question[1].song.src;
 
 Enzyme.configure({adapter: new Adapter()});
 
 
 it(`simulates click on welcome screen as an answer on first questions`, () =>{
-  const {src} = srcSong;
+  // const {src} = srcSong;
   const buttonClickPlay = jest.fn();
 
   const player = mount(<AudioPlayer
-    src={src}
+    src={question[1].song.src}
     isPlaying
     onPlayButtonClick = {buttonClickPlay}
   />);

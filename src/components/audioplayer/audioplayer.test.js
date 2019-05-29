@@ -5,14 +5,14 @@ import AudioPlayer from './audioplayer.jsx';
 
 import questions from '../../mocks/questions';
 const question = questions;
-const srcSong = questions[1].song.src;
+// const srcSong = question[0].answers[0].src;
 
 it(`AudioPlayer renders correctly`, () => {
-  const {src} = srcSong;
+  // const {src} = srcSong;
 
   const tree = renderer
     .create(<AudioPlayer
-      src={src}
+      src={question[0].answers[0].src}
       onPlayButtonClick = {() => {
         question.song.genre = `blues`;
       }
