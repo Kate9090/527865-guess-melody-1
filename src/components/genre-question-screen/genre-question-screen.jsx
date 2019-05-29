@@ -10,7 +10,7 @@ class GenreQuestionScreen extends PureComponent {
     // const {answers} = question;
     this.state = {
       activePlayer: -1,
-      answers: [],
+      answers: [false, false, false, false],
     };
 
     this._handleSubmit = this._handleSubmit.bind(this);
@@ -23,28 +23,16 @@ class GenreQuestionScreen extends PureComponent {
     this.props.handleSubmit(this.state.answers);
   }
 
-  _handleAnswer(answer, i) {
-    const {answers} = this.state;
-    answer.i = i;
+  _handleAnswer(i) {
+    // const {answers} = this.state;
 
-    const answerIndex = answers.findIndex((item) => item.i === answer.i);
+    const answers = this.state.answers.slice(0);
 
-    if (answerIndex !== -1) {
-      this.setState({
-        answers: [
-          ...answers.slice(0, answerIndex),
-          ...answers.slice(answerIndex + 1)
-        ]
-      });
+    answers[i] = !answers[i];
 
-      return;
-    }
-
-    this.setState({answers: [...answers, answer]});
-    // console.log(answers);
+    this.setState({answers});
   }
 
-  // console.log(answers);
 
   _changeActivePlayer(index) {
     this.setState({
@@ -78,7 +66,7 @@ class GenreQuestionScreen extends PureComponent {
                 type="checkbox"
                 name="answer"
                 value={it.genre}
-                onChange={() => this._handleAnswer(it, i)}
+                onChange={() => this._handleAnswer(i)}
                 id={i} />
               <label className="game__check" htmlFor={i}>Отметить</label>
             </div>
