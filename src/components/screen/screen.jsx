@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {ActionCreator} from '../../reducer';
 
 import Welcome from '../welcome/welcome.jsx';
 import GenreQuestionScreen from '../genre-question-screen/genre-question-screen.jsx';
@@ -15,15 +16,10 @@ class Screen extends Component {
   }
 
   _handleNumberOfScreen(userAnswer) {
-    const {questions, question,
-      // mistakes,
-      // screenParams
-    } = this.props;
-    // const {maxMistakes} = screenParams;
+    const {questions, question, mistakes, screenParams} = this.props;
+    const {maxMistakes} = screenParams;
 
-    this.props.onUserAnswer(questions[question], userAnswer
-        // mistakes, maxMistakes
-    );
+    this.props.onUserAnswer(questions[question], userAnswer, mistakes, maxMistakes);
   }
 
   _getScreen(question) {
@@ -67,25 +63,39 @@ Screen.propTypes = {
   questions: PropTypes.arrayOf(PropTypes.shape({
     answers: PropTypes.array.isRequired,
   })).isRequired,
-  // screenParams: PropTypes.shape({
-  //   gameTime: PropTypes.number.isRequired,
-  //   maxMistakes: PropTypes.number.isRequired,
-  // }),
+  screenParams: PropTypes.shape({
+    gameTime: PropTypes.number.isRequired,
+    maxMistakes: PropTypes.number.isRequired,
+  }),
   updateData: PropTypes.func,
   question: PropTypes.number.isRequired,
   onUserAnswer: PropTypes.func.isRequired,
   isAnswerCorrect: PropTypes.bool,
   onWelcomeScreenClick: PropTypes.func.isRequired,
-  // mistakes: PropTypes.number.isRequired,
+  mistakes: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
   questions: state.questionsArray,
+  question: state.step,
+  mistakes: state.mistakes,
+  screenParams: state.gameParam,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onWelcomeScreenClick: () =>
+    dispatch(ActionCreator[`INCREMENT_STEP`]()),
+
+  onUserAnswer: (question, userAnswer, mistakes, maxMistakes) => {
+    dispatch(ActionCreator[`INCREMENT_STEP`]());
+    dispatch(ActionCreator[`INCREMENT_MISTAKES`](question, userAnswer, mistakes, maxMistakes));
+  },
 });
 
 export {Screen};
 
 export default connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(Screen);
 
